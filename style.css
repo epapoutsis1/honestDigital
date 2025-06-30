@@ -1,24 +1,32 @@
 
     /* Hide mobile image on desktop */
-    .mobileImage {
+.mobileImage {
     display:none;
     }
     /* No sidescroll */
-    body, html {
+body, html {
     overflow-x:hidden;
     font-family: 'Mazda Type', sans-serif;
     }
 
-    .main-hero {
+.main-hero {
     position: relative;
-    min-height: 100vh;
+    min-height: unset;
+    height:auto;
     overflow: hidden;
     }
 
-    .header {
+@font-face {
+    font-family: 'Mazda Type';
+    src: url('fonts/MazdaType.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.header {
     position:relative;
     margin:0 auto;
-    margin-top:10%;
+    margin-top:5%;
     margin-bottom:32px;
     padding:0;
     z-index:2;
@@ -27,15 +35,17 @@
     display:flex;
     justify-content:center;
     align-items: flex-start;
+    letter-spacing:5px;
+    font-weight:500;
     }
     /* Header desktop*/
-    .header h1 {
+.header h1 {
     position: static;
     width:100%;
     height: 22px;
     margin:0;
     padding:0;
-    font-family: 'Mazda Type';
+    font-family: 'Mazda Type' sans-serif;
     font-style:normal;
     font-weight:500;
     font-size:24px;
@@ -50,17 +60,28 @@
     text-align:center;
     }
 
+    /* @media(max-width:600px) {
+        .header h1 {
+            font-family: 'Mazda Type' sans-serif;
+            font-size:18px;
+            font-weight:500;
+            letter-spacing:5px;
+            
+
+        }
+    } */
+
 
     /* Mazda_CX-90_BG desktop*/
     /* Desktop image: full width, centered */
-    .desktopImage {
+.desktopImage {
     margin:0;
     padding:0;
     position:relative;
     z-index:1;
     }
 
-    .desktopImage img {
+.desktopImage img {
     display: block;
     width: 100%;
     height:auto;
@@ -85,12 +106,15 @@
     flex-direction: column;
     justify-content: flex-start;
     color: #fff;
-    margin-top:15%;
+    margin-top:10%;
     margin-bottom:90%;
     margin-left:4%;
     }
 
-
+.offers-details{
+    
+    margin-left:4%;
+    }
 
 @media (max-width: 600px) {
     .imageContent {
@@ -100,6 +124,21 @@
     .imageContent .model,
     .imageContent .offer {
         margin-top: 0 !important; /* Remove extra margin so only padding-top is used */
+    }
+}
+
+@media (max-width: 600px) {
+    .imageContent {
+        align-items: center !important;
+        text-align: center !important;
+    }
+    .imageContent .subtitle,
+    .imageContent .model,
+    .imageContent .offer {
+        align-items: center !important;
+        text-align: center !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 }
     
@@ -127,18 +166,25 @@
 
     /* Typography */
 .imageContent .subtitle {
-    font-size: 14px;
-    letter-spacing: 2px;
+    font-family: 'Mazda Type', sans-serif;
+    font-size: 13px;
+    font-weight:400;
+    line-height:100%;
+    width:215px;
+    letter-spacing: 2.6px;
     margin-bottom: 16px;
     color: #ccc;
+    vertical-align:center;
     }
 .imageContent .model {
+    font-family:'Mazda Type', sans-serif;
     font-size: 48px;
-    font-weight: bold;
+    font-weight: 700;
     margin: 0 0 16px 0;
     letter-spacing: 2px;
     }
 .imageContent .offer {
+    font-family:'Mazda Type', sans-serif;
     font-size: 20px;
     margin-bottom: 32px;
     }
@@ -146,26 +192,31 @@
     font-weight: bold;
     }
 .cta-buttons {
+    margin: 24px auto 0 auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px; /* space between buttons */
-    margin: 32px 0 0 0;
-    width: 100%;
+    gap: 12px;
+    z-index: 3;
+    pointer-events: auto;
 }
 
+
 .cta-buttons button {
-    min-width: 160px;
-    max-width: 260px;
-    height: 48px;
-    font-size: 16px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    height: 44px;
+    font-size: 13px;
     font-family: 'Mazda Type', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     border-radius: 5px;
     border: 2px solid #111;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
+    margin: 0;
+    display: block;
+    letter-spacing: 2px;
 }
+
 
 .cta-buttons .primary {
     background: #fff;
@@ -179,19 +230,18 @@
     border: 2px solid #fff;
 }
 
-/* Responsive: keep buttons side by side on all screens */
-@media (max-width: 700px) {
+/* @media (min-width: 601px) {
     .cta-buttons {
-        gap: 12px;
-        margin: 24px 0 0 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
     }
     .cta-buttons button {
-        width: 320px;
-        font-size: 13px;
-        height: 44px;
-        padding: 0 8px;
+        width: 100%;
+        max-width: 360px;
     }
-}
+} */
+
 
 .offer-details {
     display: flex;
@@ -200,41 +250,48 @@
     align-items: flex-start;
     gap: 0; /* space between columns, adjust as needed */
     margin: 32px 0;
+    margin-top:-10px;
     padding: 24px 0;
     }
 
-.offer-details .p {
-    font: 'Mazda Type', 'sans-serif';
-    }
-
 .offer-details > div {
+    flex: 1 1 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    min-width: 100px;
-    text-align:left;
-    position:relative;
-    padding: 0 16px;
+    align-items: center;
+    padding: 0 24px;
+    min-width: 0;
+}
+
+.offer-details .h1 {
+    font-family:'Mazda Type', sans-serif;
+}
+
+.offer-details .p {
+    font-family: 'Mazda Type', sans-serif;
+    font-size:16px;
     }
 
     /* Add left border to 2nd and 3rd columns */
 .offer-details > div:not(:first-child) {
     border-left: 1.5px solid #fff;
+    margin-left:0;
+    margin-right:0;
+    padding-left: 24px;
+    padding-right:24px;
+    height:68px;
 }
 
 
-
-
-.big {
+  .big {
     font-size: 32px;
-    font-weight: bold;
-    font: 'Mazda Type', 'sans-serif';
-    font-weight:700;
-    margin: 0 0 8px 0;
+    font-weight: 700;
     letter-spacing: 2px;
-    color:#fff;
-    }
-
+    color: #fff;
+    margin-bottom: 4px;
+    font-family: 'Mazda Type', sans-serif;
+    text-align: center;
+  }
 
 
 
@@ -261,15 +318,13 @@
     
 
 
-    /* Responsive: stack vertically on mobile */
-@media (max-width: 600px) {
-    .offer-details {
-    flex-direction: column;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-bottom:131%;
 
+@media (max-width: 900px) {
+    .offer-details {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        margin-top:1%;
     }
 }
 
@@ -293,6 +348,15 @@
         z-index: 2;
         pointer-events: none; /* Prevents overlay from blocking scroll/tap, remove if you need interactivity */
     }
+
+@media (max-width: 600px) {
+    .imageContent {
+        padding-top: 180px !important; /* Increase this value until your content sits where you want */
+        padding-bottom: 0;
+        margin-top: 0;
+        justify-content: flex-start;
+    }
+}
     .cta-buttons {
         position: static;
         width: 90vw;
@@ -327,9 +391,11 @@
         background: transparent;
         z-index: 3;
         pointer-events: auto;
-        text-align: center;
+        text-align: left;
     }
 }
+
+
 
 .info-icon {
     left: 54px;
@@ -348,12 +414,6 @@
 }
 
 @media (max-width: 600px) {
-.imageContent {
-    padding: 24px 12px 16px 12px;
-    }
-}
-
-@media (max-width: 600px) {
 .disclaimer,
 .info-icon {
     position: static !important;
@@ -364,7 +424,7 @@
     margin: 24px 0 0 0;
     margin-bottom:50px;
     display: flex;
-    align-items: left;
+    align-items: center;
     gap: 8px;
     color: #ccc;
     font-size: 15px;
@@ -390,12 +450,12 @@
     padding: 0;
 }
 
-.disclaimer {
+.disclaimer-left {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 8px;
-    white-space: nowrap; /* Prevents wrapping between icon and text */
+    
 }
 
 .disclaimer img,
@@ -406,19 +466,18 @@
 }
 
 .disclaimer .expires {
-    display: block;
-    margin-left: 0;
-    margin-top: 4px;
-    white-space: normal;
-    font-size: 14px;
-    color: #fff;
-    width: 100%;
+    font-size:15px;
+    color:#fff;
+    white-space:nowrap;
+    margin-left:12px;
+    font-family:'Mazda Type', sans-serif;
+    font-weight:600;
 }
 
     /* Responsive Header mobile*/
-@media (max-width: 800px) {
+@media (max-width: 600px) {
     .header {
-        width:100%;
+        margin-top:20px;
         max-width:100%;
         height:auto;
         margin-bottom:24px;
@@ -432,6 +491,11 @@
         text-align:center;
         justify-content:center;
         padding:0;
+        font-family:'Mazda Type' sans-serif;
+        font-size:18px;
+        line-height:24px;
+        letter-spacing:5px;
+       
     }
 }
 
@@ -482,47 +546,110 @@
     }
 }
 
-/* Bottom nav layout */
+/* Main nav bar styles */
 .bottom-nav {
     display: flex;
     align-items: center;
     width: 100%;
     background: #fff;
     border-top: 2px solid #e5e5e5;
+    border-bottom: 1px solid #eee;
     padding: 12px 0;
     position: relative;
     z-index: 10;
     font-family: inherit;
-    /* gap:885.1px; */
-    flex-direction:row;
-    
 }
 
+@media (max-width:900px) {
+    .bottom-nav {
+        position:absolute;
+        margin-top:32px;
+        order:99;
+    }
+}
+
+/* Search nav styles */
 .bottom-nav .search-nav {
-    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     min-width: 160px;
-    justify-content: flex-start;
     border-right: 1px solid #f0f0f0;
     padding-left: 24px;
-    gap: 8px;
+    margin-right: 32px;
     background: #fafafa;
-    display: flex;
-    align-items: center;
-    margin-right: 32px; /* space between search and nav items */
 }
 
-
+/* Nav items container */
 .bottom-nav .nav-items-right {
     display: flex;
-    flex-direction: row;   /* Ensure nav items are horizontal */
+    flex-direction: row;
     align-items: center;
-    gap: 24px;             /* Space between nav items */
-    margin-left: auto;     /* Push to the right */
+    gap: 24px; /* space between nav items */
+    margin-left: auto;
 }
 
+/* Each nav item */
 .bottom-nav .nav-items-right .nav-item {
     display: flex;
     align-items: center;
+    gap: 8px; /* icon-text spacing */
+    padding: 0 24px;
+    border-right: 1px solid #f0f0f0;
+    font-size: 16px;
+    background: transparent;
+    height: 40px;
+}
+
+.bottom-nav .nav-items-right .nav-item:last-child {
+    border-right:none;
+    padding-right:24px;
+}
+
+/* Icon styles */
+.bottom-nav .nav-icon img {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Remove default input styles for search */
+.bottom-nav .search-nav input[type="text"] {
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: transparent;
+    color: #222;
+    width: 80px;
+}
+
+/* Responsive: stack vertically on mobile */
+@media (max-width: 900px) {
+    .bottom-nav .nav-items-right .nav-item {
+        padding: 0 12px;
+        font-size: 15px;
+    }
+}
+@media (max-width: 600px) {
+    .bottom-nav {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+    }
+    .bottom-nav .nav-items-right {
+        flex-direction: column;
+        gap: 0;
+        margin-left: 80px;
+        padding-top:80px;
+    }
+    .bottom-nav .nav-items-right .nav-item {
+        border-right: none;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 12px 0;
+        width: 100%;
+        justify-content: flex-start;
+    }
 }
 
 /* Style the search input for clarity */
@@ -556,11 +683,12 @@
     }
 }
 
+
 .info-text {
     width:1058px;
     max-width:1440px;
     margin:auto;
-    font-family: 'Mazda Type';
+    font-family: 'Mazda Type', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -569,14 +697,14 @@
     color: #111111;
 }
 
+
 .info-text h2 {
     /* 2022 MAZDA CX-30 TRIMS AND FEATURES */
     min-width: 495px;
     max-width: 1110px;
     height: 22px;
     right:615px;
-    font-family: 'Mazda Type';
-    font-style: normal;
+    font-family: 'Mazda Type', sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 22px;
@@ -633,7 +761,7 @@
     margin: 24px 0 12px 0;
     align-items: left;
     letter-spacing: 2.25px;
-    }
+}
     
 .info-text .p {
     font-family:'Mazda Type', sans-serif;
